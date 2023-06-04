@@ -62,7 +62,6 @@ namespace 作業六_2_記事本_
                 // 建立一個檔案資料流，並且設定檔案名稱與檔案開啟模式為「開啟檔案」
                 FileStream fileStream = new FileStream(dlg.FileName, FileMode.Open);
                 TextRange range = new TextRange(rtbText.Document.ContentStart, rtbText.Document.ContentEnd);
-                // 將檔案資料流以純文字格式，放進rtbText元件之中顯示
                 range.Load(fileStream, DataFormats.Text);
                 fileStream.Close();
             }
