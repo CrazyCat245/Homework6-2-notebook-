@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO; // 要引用這個IO函式庫，才能作檔案處理
+using Microsoft.Win32; // 引用視窗物件函式庫
 
 namespace 作業六_2_記事本_
 {
@@ -30,10 +31,11 @@ namespace 作業六_2_記事本_
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             // 開啟一個存檔對話框
-            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
+            OpenFileDialog dlg = new OpenFileDialog();
             // 設定檔案過濾，可以選擇只顯示純文字檔（*.txt）
             dlg.Filter = "純文字資料 (*.txt)|*.txt|All files (*.*)|*.*";
-            // ShowDialog() 來顯示對話框，如果點選確認按鍵，會等於 true
+
+            // ShowDialog() 來顯示對話框，如果點選存檔按鍵，會等於 true
             if (dlg.ShowDialog() == true)
             {
                 // 建立一個檔案資料流，並且設定檔案名稱與檔案開啟模式為「新增檔案」
@@ -45,13 +47,15 @@ namespace 作業六_2_記事本_
                 // 關閉檔案資料流
                 fileStream.Close();
             }
+
         }
 
         private void btnOpen_Click(object sender, RoutedEventArgs e)
         {
             // 開啟一個開啟檔案對話框
-            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            OpenFileDialog dlg = new OpenFileDialog();
             dlg.Filter = "純文字資料 (*.txt)|*.txt|All files (*.*)|*.*";
+
             // ShowDialog() 來顯示對話框，如果點選開啟按鍵，會等於 true
             if (dlg.ShowDialog() == true)
             {
